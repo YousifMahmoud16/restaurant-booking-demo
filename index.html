@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Restaurant Booking Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Supabase client (global) -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+        // ===== ضع هنا قيم مشروعك (أنتِ بالفعل وضعتها) =====
+        const SUPABASE_URL = 'https://tkkayhzzfltdxeaxjuhi.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRra2F5aHp6Zmx0ZHhlYXhqdWhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc5MzE4MzAsImV4cCI6MjA3MzUwNzgzMH0.Ily4v0hytbDREsEEO9dO1kEoP75rsPbkzP7Y_xiF53k';
+        // create global client
+        const { createClient } = supabase;
+        window.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="brand">Local Bites — Booking Demo</h1>
+            <nav><a href="admin.html" class="link">Admin</a></nav>
+        </div>
+    </header>
+
+    <main class="container main">
+        <section class="card booking-card" aria-labelledby="booking-heading">
+            <h2 id="booking-heading">Book a table</h2>
+            <p class="muted">Fill the form to reserve a table. You will receive confirmation here (demo).</p>
+
+            <form id="booking-form" class="form">
+                <label>Name <input name="name" type="text" required /></label>
+                <label>Email <input name="email" type="email" required /></label>
+                <label>Date <input name="date" type="date" required /></label>
+                <label>Time <input name="time" type="time" /></label>
+                <label>Guests <input name="guests" type="number" min="1" value="2" /></label>
+                <label>Notes <textarea name="notes" rows="3"></textarea></label>
+
+                <div class="actions">
+                    <button type="submit" class="btn primary">Send Booking</button>
+                    <button type="button" id="clear-btn" class="btn">Clear</button>
+                </div>
+
+                <p id="message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <!-- Posts section -->
+        <section id="posts-section" class="card" aria-labelledby="posts-heading">
+            <h2 id="posts-heading">Latest posts</h2>
+            <p class="muted">These are demo posts stored in the Supabase <code>posts</code> table.</p>
+            <div id="posts-list">
+                <p class="muted">Loading posts…</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ملف السكربت الموحد (لا تستخدم type="module" هنا) -->
+    <script src="script.js"></script>
+</body>
+
+</html>

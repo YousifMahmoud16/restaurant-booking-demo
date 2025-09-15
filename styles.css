@@ -1,0 +1,29 @@
+:root {
+  --accent: #2b7cff;
+  --bg: #f7fbff;
+  --card: white;
+  --muted: #6b7280;
+  --maxw: 900px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial, Helvetica, sans-serif;background:var(--bg);color:#0f172a;line-height:1.5}
+.container{max-width:var(--maxw);margin:0 auto;padding:20px}
+.site-header{background:linear-gradient(90deg,#fff 0%, #f8fbff 100%);border-bottom:1px solid rgba(0,0,0,0.04)}
+.site-header .container{display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+.brand{font-weight:700}
+.link{color:var(--muted);text-decoration:none}
+.main{padding:28px 20px}
+.card{background:var(--card);border-radius:10px;padding:18px;box-shadow:0 8px 24px rgba(2,6,23,0.04);margin-bottom:18px}
+.booking-card{max-width:620px;margin:0 auto}
+.form label{display:block;margin-bottom:10px;font-weight:600}
+.form input,.form textarea{width:100%;padding:10px;border:1px solid #e6eef8;border-radius:8px;margin-top:6px}
+.actions{display:flex;gap:10px;margin-top:12px}
+.btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;background:#e6eef8;color:#0f172a}
+.btn.primary{background:var(--accent);color:#fff}
+.muted{color:var(--muted)}
+#message,#login-msg{margin-top:12px;color:var(--muted)}
+#list{margin-top:12px}
+.booking-item{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.04);margin-bottom:10px;background:#fafcff}
+@media (max-width:720px){
+  .hero-inner{grid-template-columns:1fr}
+}

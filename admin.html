@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin — Bookings & Posts</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Supabase client -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+        // ضع هنا قيم مشروعك (تمت إضافتها من ملفك القديم)
+        const SUPABASE_URL = 'https://tkkayhzzfltdxeaxjuhi.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRra2F5aHp6Zmx0ZHhlYXhqdWhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc5MzE4MzAsImV4cCI6MjA3MzUwNzgzMH0.Ily4v0hytbDREsEEO9dO1kEoP75rsPbkzP7Y_xiF53k';
+        const { createClient } = supabase;
+        window.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="brand">Local Bites — Admin</h1>
+            <nav><a href="index.html" class="link">Home</a></nav>
+        </div>
+    </header>
+
+    <main class="container main">
+        <!-- Login -->
+        <section class="card" id="auth-card">
+            <h2>Admin Login</h2>
+            <p class="muted">Sign in with your admin email.</p>
+            <form id="login-form" class="form">
+                <label>Email <input name="email" type="email" required /></label>
+                <label>Password <input name="password" type="password" required /></label>
+                <div class="actions">
+                    <button type="submit" class="btn primary">Sign in</button>
+                </div>
+                <p id="login-msg" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <!-- Bookings (بعد التسجبل) -->
+        <section class="card" id="bookings-list" hidden>
+            <h2>Bookings</h2>
+            <p class="muted">Latest bookings (from Supabase)</p>
+            <div id="list"></div>
+            <div class="actions">
+                <button id="signout" class="btn">Sign out</button>
+            </div>
+        </section>
+
+        <!-- Posts management -->
+        <section class="card" id="posts-admin" hidden>
+            <h2>Manage Posts</h2>
+            <form id="post-form" class="form">
+                <label>Title <input name="title" type="text" required /></label>
+                <label>Content <textarea name="content" rows="4" required></textarea></label>
+                <div class="actions">
+                    <button type="submit" class="btn primary">Create Post</button>
+                </div>
+                <p id="post-msg" role="status" aria-live="polite"></p>
+            </form>
+
+            <h3 style="margin-top:18px">Existing Posts</h3>
+            <div id="posts-admin-list"></div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
